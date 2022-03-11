@@ -3,7 +3,7 @@ class Admin::CategoriesController < ApplicationController
   http_basic_authenticate_with name: ENV["ADMIN_AUTH_USERNAME"], password: ENV["ADMIN_AUTH_PSWD"]
 
   def index
-    @category = Category.order(name: :desc).all
+    @categories = Category.all
   end
 
   def new
