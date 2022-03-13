@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   # get the form data and creates new user in db
   post '/users' => 'users#create'
 
+  # renders a login form, logging users in, logging users out
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
