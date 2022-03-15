@@ -38,6 +38,27 @@ RSpec.describe User, type: :model do
       expect(@user2.errors.full_messages).to include("Email has already been taken")
     end
 
+    it "should fail without password" do
+      @user.password = nil
+
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include("Password can't be blank")
+    end
+
+    it "should fail without password_confirmation" do
+      @user.password_confirmation = nil
+
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include("Password confirmation can't be blank")
+    end
+
+    it "should fail if password doesn't match password_confirmation" do
+      @user.password_confirmation = "pswd"
+
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+    end
+
 
   end
 
