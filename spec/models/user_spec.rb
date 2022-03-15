@@ -85,10 +85,25 @@ RSpec.describe User, type: :model do
     end
 
 
-    it "should return nil if authentication if provided password is incorrect" do
+    it "should return nil if provided password is incorrect" do
       user = User.authenticate_with_credentials(@user.email, "incorrect pswd")
 
       expect(user).to eq(nil)
+    end
+
+    it "should return user if email provided is with spaces" do
+
+      email = " example@mail.com "
+      user = User.authenticate_with_credentials(email, @user.password)
+
+      expect(user).to eq(user)
+    end
+
+    it "should return user with wrong case email provided" do
+      email = "exAmPle@mAil.cOm"
+      user = User.authenticate_with_credentials(email, @user.password)
+
+      expect(user).to eq(user)
     end
   end
 end
