@@ -53,14 +53,14 @@
         <span class= "navbar-text">
         <% if !current_user%>
         
-            <%= link_to 'Sign Up', register_path, class: 'btn btn-info' %>    
+            <%= link_to 'Sign Up', register_path %>    
             |
-            <%= link_to 'Sign In', login_path, class: 'btn btn-info' %>
+            <%= link_to 'Sign In', login_path %>
           
 
         <% else %>
         Signed in as:
-          <%= current_user.email %> | <%= link_to 'Sign Out', logout_path, class: 'btn btn-info' %>
+          <%= current_user.email %> | <%= link_to 'Sign Out', logout_path %>
           
         
 
